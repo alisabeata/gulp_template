@@ -1,0 +1,16 @@
+// countEm
+// a - необходимое значение
+// b - значение родительского блока
+
+countEm(a, b)
+    a = unit(a, px)
+    b = unit(b, px)
+    c = a / b
+    return unit(c, em)
+    
+// countPersent
+countPersent(a, b)
+    a = unit(a, px)
+    b = unit(b, px)
+    c = a / b * 100
+    return unit(c, '%')

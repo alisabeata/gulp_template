@@ -1,0 +1,26 @@
+.page
+.footer
+    transform translateY(70px)
+    opacity 0
+    
+    
+.page-loaded
+    
+    .page
+    .footer
+        animation pageLoaded .5s .05s cubic-bezier(0.23, 1, 0.32, 1) forwards, showElem .4s .05s forwards
+        
+
+        
+@keyframes pageLoaded
+    0%
+        transform translateY(70px)
+    100%
+        transform translateY(0)
+        
+        
+@keyframes showElem
+    0%
+        opacity 0
+    100%
+        opacity 1

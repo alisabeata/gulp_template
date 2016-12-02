@@ -1,0 +1,9 @@
+mixin script(scripts)
+	each src in scripts
+		- src = ((/^(https?:)?\/\//.test(src) || /bower_components/.test(src)) ? src : 'js/' + src);
+		script(src=src)
+
+mixin style(styles)
+	each href in styles
+		- href = ((/^(https?:)?\/\//.test(href) || /bower_components/.test(href)) ? href : 'css/' + href);
+		link(href=href rel='stylesheet')

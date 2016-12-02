@@ -1,0 +1,13 @@
+include ../helpers/mixins
+
+doctype html
+html(class='no-js')
+    include ../partials/head
+    body
+        .page
+            block header
+            block content
+            block footer
+        block scripts
+
+

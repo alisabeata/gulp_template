@@ -1,0 +1,26 @@
+extends ../layouts/default
+
+block variables
+    - var title = 'Title'
+    
+block styles
+    +style([
+        'index.css'
+    ])
+
+block header
+    include ../partials/header
+    
+block footer
+    include ../partials/footer
+
+block content
+    .page__content
+        include ../blocks/index-inner
+       
+block scripts
+    +script([
+        '../../bower_components/jquery/dist/jquery.min.js',
+        'main.js',
+        'common.min.js',
+    ])
