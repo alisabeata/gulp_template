@@ -33,10 +33,16 @@ lazeRequireTask('clean', './tasks/clean', {
     src: ['build', 'manifest']
 });
 
-lazeRequireTask('copy', './tasks/copy', {
+lazeRequireTask('copy:files', './tasks/copy', {
     src: 'assets/frontend/copy/**',
     dest: 'build/frontend',
-    taskName: 'copy'
+    taskName: 'copy:files'
+});
+
+lazeRequireTask('copy:img', './tasks/copy', {
+    src: 'assets/frontend/img/**/**.*',
+    dest: 'build/frontend/img',
+    taskName: 'copy:img'
 });
 
 lazeRequireTask('server', './tasks/server', {
@@ -54,17 +60,15 @@ gulp.task('watch', function() {
     gulp.watch('assets/frontend/stylus/**/*.*', gulp.series('styles'));
     gulp.watch('assets/frontend/templates/**/*.pug', gulp.series('pug'));
     gulp.watch('assets/frontend/js/**/*.js', gulp.series('scripts'));
-    gulp.watch('assets/frontend/copy/**/*.*', gulp.series('copy'));
+    gulp.watch('assets/frontend/copy/**/*.*', gulp.series('copy:files'));
+    gulp.watch('assets/frontend/img/**/*.*', gulp.series('copy:img'));
 });
 
 gulp.task('build', gulp.series(
     'clean',
-    //'styles',
-    //'scripts',
     gulp.parallel('styles', 'scripts'),
     'pug',
-    'copy'
-    //gulp.parallel('styles', 'copy')
+    gulp.parallel('copy:files', 'copy:img')
 ));
 
 gulp.task('dev', gulp.series(
